@@ -1,0 +1,35 @@
+
+<PROGRAM> → <QUEST>
+
+<QUEST> → QUEST <STRING> { <STATEMENTS> }
+
+<STATEMENTS> → <STATEMENT> <STATEMENTS> | ε
+
+<STATEMENT> → <SAY> | <SPECIAL> | <SET>
+            | <IF> | <CHOICE>
+
+<SAY> → SAY <STRING> ;
+
+<SPECIAL> → SPECIAL <NAME> = <NUMBER> ;
+
+<SET> → SET <NAME> = <EXPRESSION> ;
+
+<IF> → IF <CONDITION> { <STATEMENTS> }
+       ELSE { <STATEMENTS> }
+
+<CHOICE> → CHOICE { <OPTIONS> }
+
+<OPTIONS> → <OPTION> | <OPTION> <OPTIONS>
+
+<OPTION> → <STRING> -> { <STATEMENTS> }
+
+<CONDITION> → <EXPRESSION> <COMPARE> <EXPRESSION>
+
+<COMPARE> → > | < | >= | <= | ==
+
+<EXPRESSION> → <VALUE>
+             | <VALUE> + <EXPRESSION>
+             | <VALUE> - <EXPRESSION>
+
+<VALUE> → <NAME> | <NUMBER>
+  
